@@ -272,11 +272,9 @@ def modelling(dataset):
             results.append(cv_results)
             names.append(name)
     #crear dataset de resultados
-    #resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
-    resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5'])
+    resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
     
-   # resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
-    resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5'])
+    resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
     resultsDF['Model'] = names
     #graficar resultados
     fig = go.Figure()
