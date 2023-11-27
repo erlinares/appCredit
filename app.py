@@ -255,10 +255,10 @@ def modelling(dataset):
     models.append(('KNN', KNeighborsClassifier()))
     models.append(('CART', DecisionTreeClassifier()))
     models.append(('NB', GaussianNB()))
-    models.append(('RF', RandomForestClassifier()))
-    models.append(('SVM', SVC(gamma='auto')))
-    models.append(('XGBM', XGBClassifier()))
-    models.append(('LGBM', LGBMClassifier()))
+    #models.append(('RF', RandomForestClassifier()))
+    #models.append(('SVM', SVC(gamma='auto')))
+    #models.append(('XGBM', XGBClassifier()))
+    #models.append(('LGBM', LGBMClassifier()))
 
     # Entrenamos y validamos cada modelo
     # arreglo para analizar los resultados
@@ -272,8 +272,11 @@ def modelling(dataset):
             results.append(cv_results)
             names.append(name)
     #crear dataset de resultados
-    resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
-    resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
+    #resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
+    resultsDF = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5'])
+    
+   # resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'])
+    resultsBox = pd.DataFrame (results, columns = ['V0','V1', 'V2', 'V3', 'V4', 'V5'])
     resultsDF['Model'] = names
     #graficar resultados
     fig = go.Figure()
