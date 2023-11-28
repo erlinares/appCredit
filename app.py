@@ -337,14 +337,14 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     st.write("Confusion Matrix:")
     #st.write(confusion_matrix(y_test, NN_prediction))
     #cm = confusion_matrix(y_test, NN_prediction)
-    heatmap = go.Heatmap(z=cm,
-                     x=['Good', 'Bad'],
-                     y=['Good', 'Bad'],
-                     colorscale='Viridis')
+    #heatmap = go.Heatmap(z=cm,
+    #                 x=['Good', 'Bad'],
+    #                 y=['Good', 'Bad'],
+    #                 colorscale='Viridis')
     # Crear un objeto figura
-    fig = go.Figure(data=[heatmap])
+    #fig = go.Figure(data=[heatmap])
     # Utilizar st.plotly_chart para mostrar la figura en Streamlit
-    st.plotly_chart(fig)
+    #st.plotly_chart(fig)
 
     #st.write("fbeta score:")
     #st.write(fbeta_score(y_test, NN_prediction, beta=2))
@@ -352,23 +352,24 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     #st.write(classification_report(y_test, NN_prediction))
     
     # Generate ROC curve values: fpr, tpr, thresholds
-    fpr, tpr, thresholds = roc_curve(y_test, NNpredictions[:, 1])
-    lr_auc = roc_auc_score(y_test, NNpredictions[:, 1])
+    #fpr, tpr, thresholds = roc_curve(y_test, NNpredictions[:, 1])
+    #lr_auc = roc_auc_score(y_test, NNpredictions[:, 1])
     # Plot ROC curve
-    fig = go.Figure()
+    #fig = go.Figure()
     # Curva de habilidad nula
-    fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash'), name='No Skill: ROC AUC=%.3f' % (0.5)))
+    #fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash'), name='No Skill: ROC AUC=%.3f' % (0.5)))
     # Curva ROC del modelo
-    fig.add_trace(go.Scatter(x=fpr, y=tpr, mode='lines', name='Logistic: ROC AUC=%.3f' % (lr_auc)))
+    #fig.add_trace(go.Scatter(x=fpr, y=tpr, mode='lines', name='Logistic: ROC AUC=%.3f' % (lr_auc)))
     # Configura el diseño del gráfico
-    fig.update_layout(xaxis_title='False Positive Rate',
-                  yaxis_title='True Positive Rate',
-                  title='ROC Curve',
-                  showlegend=True)
+    # fig.update_layout(xaxis_title='False Positive Rate',
+    #             yaxis_title='True Positive Rate',
+    #              title='ROC Curve',
+    #              showlegend=True)
     # Muestra la figura en Streamlit
-    st.plotly_chart(fig)
+    #st.plotly_chart(fig)
     
-    return NN_model
+    #return NN_model
+return 1
 
 def predictionForm(modelNN):
     option_sex = ['male', 'female']
