@@ -301,11 +301,13 @@ def nn_model(learning_rate, y_train_categorical):
 
     # Compile the network :
     optimizer = Adam(learning_rate=1e-5)
-    NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    #NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     #NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-    NN_model.summary()
-    return NN_model
+    #NN_model.summary()
+    #return NN_model
+    return 1
+
 
 def TrainningNN(X_train, X_test, y_train, y_test):
     y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
