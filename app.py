@@ -307,9 +307,7 @@ def nn_model(learning_rate, y_train_categorical):
 
 
     NN_model.summary()
-    #return NN_model
-    return 1
-
+    return NN_model
 
 def TrainningNN(X_train, X_test, y_train, y_test):
     y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
