@@ -253,7 +253,7 @@ def modelling(dataset):
     models.append(('LGR', LogisticRegression()))
     models.append(('LDA', LinearDiscriminantAnalysis()))
     models.append(('KNN', KNeighborsClassifier()))
-    #models.append(('CART', DecisionTreeClassifier()))
+    models.append(('CART', DecisionTreeClassifier()))
     #models.append(('NB', GaussianNB()))
     #models.append(('RF', RandomForestClassifier()))
     #models.append(('SVM', SVC(gamma='auto')))
@@ -278,7 +278,7 @@ def modelling(dataset):
     resultsDF['Model'] = names
     #graficar resultados
     fig = go.Figure()
-    for i in range(3):
+    for i in range(4):
         fig.add_trace(go.Box(y=resultsBox[i:i+1].to_numpy()[0], name=names[i] ))
     st.plotly_chart(fig)
     return X_train, X_test, y_train, y_test
