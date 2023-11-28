@@ -283,7 +283,7 @@ def modelling(dataset):
         y=resultsBox[i:i+1].to_numpy()[0]
         st.write("names-", names[i])
         st.write("y-",y)
-    #st.plotly_chart(fig)
+    st.plotly_chart(fig)
     return X_train, X_test, y_train, y_test
 
 
