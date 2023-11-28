@@ -316,7 +316,9 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
 
     #convertir tensor a numpy
-    X_train = np.array(X_train)
+    #X_train = np.array(X_train)
+    X_train = X_train.numpy()
+
 
     #semilla para aleatorios
     np.random.seed(7)
