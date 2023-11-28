@@ -301,7 +301,9 @@ def nn_model(learning_rate, y_train_categorical):
 
     # Compile the network :
     optimizer = Adam(learning_rate=1e-5)
-    NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['acc'])
+    NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    #NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
     NN_model.summary()
     return NN_model
 
@@ -319,7 +321,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     nb_epochs = 50
     st.write("Forma de X_train:", X_train.shape)
     st.write("Forma de y_train_categorical:", y_train_categorical.shape)    
-    #NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
+    NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
+
 
     #convertir tensor en numpy array
     #X_test = np.array(X_test)
