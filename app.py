@@ -310,8 +310,10 @@ def nn_model(learning_rate, y_train_categorical):
     return NN_model
 
 def TrainningNN(X_train, X_test, y_train, y_test):
-    y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
-    y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
+    #y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
+    y_test_categorical = to_categorical(y_test)
+    #y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
+    y_train_categorical = to_categorical( y_train)
 
     #convertir tensor a numpy
     #X_train = np.array(X_train)
