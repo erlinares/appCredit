@@ -279,7 +279,8 @@ def modelling(dataset):
     #graficar resultados
     fig = go.Figure()
     for i in range(1):
-        #fig.add_trace(go.Box(y=resultsBox[i:i+1].to_numpy()[0], name=names[i] ))
+        st.write("graficar---------------")
+        fig.add_trace(go.Box(y=resultsBox[i:i+1].to_numpy()[0], name=names[i] ))
         y=resultsBox[i:i+1].to_numpy()[0]
         st.write("names-", names[i])
         st.write("y-",y)
