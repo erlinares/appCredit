@@ -317,16 +317,18 @@ def TrainningNN(X_train, X_test, y_train, y_test):
 
     NN_model = nn_model(1e-4, y_train_categorical)
     nb_epochs = 50
-    NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
+    st.write("Forma de X_train:", X_train.shape)
+    st.write("Forma de y_train_categorical:", y_train_categorical.shape)    
+    #NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
 
     #convertir tensor en numpy array
-    X_test = np.array(X_test)
+    #X_test = np.array(X_test)
 
-    NNpredictions = NN_model.predict(X_test)
+    #NNpredictions = NN_model.predict(X_test)
 
-    NN_prediction = list()
-    for i in range(len(NNpredictions)):
-        NN_prediction.append(np.argmax(NNpredictions[i]))
+    #NN_prediction = list()
+    #for i in range(len(NNpredictions)):
+        #NN_prediction.append(np.argmax(NNpredictions[i]))
 
     # Validation of the results
     st.write("Accuracy:")
