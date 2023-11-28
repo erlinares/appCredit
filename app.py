@@ -278,7 +278,7 @@ def modelling(dataset):
     resultsDF['Model'] = names
     #graficar resultados
     fig = go.Figure()
-    for i in range(1):
+    for i in range(2):
         fig.add_trace(go.Box(y=resultsBox[i:i+1].to_numpy()[0], name=names[i] ))
     st.plotly_chart(fig)
     return X_train, X_test, y_train, y_test
