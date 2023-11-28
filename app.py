@@ -289,18 +289,18 @@ def nn_model(learning_rate, y_train_categorical):
     NN_model = Sequential()
 
     # The Input Layer :
-    NN_model.add(Dense(128, kernel_initializer='normal',input_dim = X_train.shape[1], activation='relu'))
+    #NN_model.add(Dense(128, kernel_initializer='normal',input_dim = X_train.shape[1], activation='relu'))
 
     # The Hidden Layers :
-    NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
-    NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
-    NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
+    #NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
+    #NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
+    #NN_model.add(Dense(256, kernel_initializer='normal',activation='relu'))
 
     # The Output Layer :
-    NN_model.add(Dense(np.unique(y_train_categorical).shape[0] , kernel_initializer='normal',activation='sigmoid'))
+    #NN_model.add(Dense(np.unique(y_train_categorical).shape[0] , kernel_initializer='normal',activation='sigmoid'))
 
     # Compile the network :
-    optimizer = Adam(learning_rate=1e-5)
+    #optimizer = Adam(learning_rate=1e-5)
     #NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     #NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
