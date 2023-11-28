@@ -286,9 +286,8 @@ def modelling(dataset):
 
 #definimos el modelo
 def nn_model(learning_rate, y_train_categorical):
-    #NN_model = Sequential(layers=None, name=None)
-    a=0
-
+    NN_model = Sequential(layers=None, name=None)
+    
     # The Input Layer :
     #NN_model.add(Dense(128, kernel_initializer='normal',input_dim = X_train.shape[1], activation='relu'))
 
