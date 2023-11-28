@@ -326,8 +326,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     st.write("Forma de y_train_categorical:", y_train_categorical.shape)
 
 
-    st.write("Tipo de X_train:", X_train )
-    st.write("Tipo de y_train_categorical:", y_train_categorical )
+    st.write("Tipo de X_train:", y_train_categorical.dtype )
+    st.write("Tipo de y_train_categorical:", y_train_categorical.dtype )
     
     NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs)
     #NN_model.fit(X_train, y_train_categorical, epochs=10)
