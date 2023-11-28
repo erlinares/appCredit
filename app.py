@@ -369,7 +369,7 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     #st.plotly_chart(fig)
     
     #return NN_model
-return 1
+    return 1
 
 def predictionForm(modelNN):
     option_sex = ['male', 'female']
