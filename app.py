@@ -332,11 +332,11 @@ def TrainningNN(X_train, X_test, y_train, y_test):
 
     # Validation of the results
     st.write("Accuracy:")
-    st.write(accuracy_score(y_test, NN_prediction))
+    #st.write(accuracy_score(y_test, NN_prediction))
     
     st.write("Confusion Matrix:")
-    st.write(confusion_matrix(y_test, NN_prediction))
-    cm = confusion_matrix(y_test, NN_prediction)
+    #st.write(confusion_matrix(y_test, NN_prediction))
+    #cm = confusion_matrix(y_test, NN_prediction)
     heatmap = go.Heatmap(z=cm,
                      x=['Good', 'Bad'],
                      y=['Good', 'Bad'],
