@@ -627,7 +627,7 @@ if "Neural Network" in selected_page:
     Resultados""")
     if uploaded_file is not None:
         st.write(tf.__version__)
-        #modelNN = TrainningNN(X_train, X_test, y_train, y_test)
+        modelNN = TrainningNN(X_train, X_test, y_train, y_test)
         
 if "Prediccion" in selected_page:
     st.write("""
