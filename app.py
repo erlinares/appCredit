@@ -325,7 +325,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     nb_epochs = 10
     st.write("Forma de X_train:", X_train.shape)
     st.write("Forma de y_train_categorical:", y_train_categorical.shape)    
-    NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs)
+    #NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs)
+    NN_model.fit(X_train, y_train_categorical, epochs=10)
 
 
     #convertir tensor en numpy array
