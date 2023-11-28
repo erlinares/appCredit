@@ -317,7 +317,6 @@ def TrainningNN(X_train, X_test, y_train, y_test):
 
     #convertir tensor a numpy
     #X_train = np.array(X_train)
-    X_train = X_train.numpy()
 
 
     #semilla para aleatorios
