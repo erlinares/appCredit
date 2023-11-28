@@ -316,7 +316,7 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     np.random.seed(7)
 
     NN_model = nn_model(1e-4, y_train_categorical)
-    nb_epochs = 100
+    nb_epochs = 50
     NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
 
     #convertir tensor en numpy array
