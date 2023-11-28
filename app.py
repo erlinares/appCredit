@@ -16,8 +16,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
-from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
+#from xgboost import XGBClassifier
+#from lightgbm import LGBMClassifier
 from sklearn.model_selection import KFold,cross_val_score
 #librerias de redes neuronales
 from tensorflow.keras.callbacks import ModelCheckpoint
