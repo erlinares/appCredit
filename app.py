@@ -332,7 +332,7 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     st.write("Tipo de y_train_categorical:", y_train_categorical )
     
     #NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs)
-    #NN_model.fit(X_train, y_train_categorical, epochs=10)
+    NN_model.fit(X_train, y_train_categorical, epochs=10)
 
 
     #convertir tensor en numpy array
