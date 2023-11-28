@@ -302,7 +302,7 @@ def nn_model(learning_rate, y_train_categorical):
     # Compile the network :
     optimizer = Adam(learning_rate=1e-4)
     # NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['acc'])
-    NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    NN_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
     #NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 
