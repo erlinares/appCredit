@@ -310,8 +310,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
 
     #convertir tensor a numpy
     #X_train = np.array(X_train)
-    X_train = np.asarray(X_train)
-
+    X_train = np.asarray(X_train).astype(np.float32)
+    
     #semilla para aleatorios
     np.random.seed(7)
 
@@ -321,7 +321,7 @@ def TrainningNN(X_train, X_test, y_train, y_test):
 
     #convertir tensor en numpy array
     #X_test = np.array(X_test)
-    X_test = np.asarray(X_test)
+    X_test = np.asarray(X_test).astype(np.float32)
 
     NNpredictions = NN_model.predict(X_test)
     
