@@ -309,7 +309,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
 
     #convertir tensor a numpy
-    X_train = np.array(X_train)
+    #X_train = np.array(X_train)
+    X_train = np.asarray(X_train)
 
     #semilla para aleatorios
     np.random.seed(7)
@@ -319,7 +320,8 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
 
     #convertir tensor en numpy array
-    X_test = np.array(X_test)
+    #X_test = np.array(X_test)
+    X_test = np.asarray(X_test)
 
     NNpredictions = NN_model.predict(X_test)
     
