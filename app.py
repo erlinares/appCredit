@@ -283,11 +283,10 @@ def modelling(dataset):
     st.plotly_chart(fig)
     return X_train, X_test, y_train, y_test
 
-
 #definimos el modelo
 def nn_model(learning_rate, y_train_categorical):
     NN_model = Sequential()
-    
+
     # The Input Layer :
     NN_model.add(Dense(128, kernel_initializer='normal',input_dim = X_train.shape[1], activation='relu'))
 
@@ -300,65 +299,50 @@ def nn_model(learning_rate, y_train_categorical):
     NN_model.add(Dense(np.unique(y_train_categorical).shape[0] , kernel_initializer='normal',activation='sigmoid'))
 
     # Compile the network :
-    optimizer = Adam(learning_rate=1e-4)
-    # NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['acc'])
-    NN_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
-    #NN_model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-
+    optimizer = Adam(learning_rate=1e-5)
+    NN_model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['acc'])
     NN_model.summary()
     return NN_model
 
 def TrainningNN(X_train, X_test, y_train, y_test):
-    #y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
-    y_test_categorical = to_categorical(y_test, dtype='float32')
-    #y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
-    y_train_categorical = to_categorical( y_train, dtype='float32')
+    y_test_categorical = to_categorical(y_test, num_classes=2, dtype='float32')
+    y_train_categorical = to_categorical( y_train, num_classes=2, dtype='float32')
 
     #convertir tensor a numpy
     X_train = np.array(X_train)
-
 
     #semilla para aleatorios
     np.random.seed(7)
 
     NN_model = nn_model(1e-4, y_train_categorical)
-    nb_epochs = 10
-    st.write("Forma de X_train:", X_train.shape)
-    st.write("Forma de y_train_categorical:", y_train_categorical.shape)
-
-
-    st.write("Tipo de X_train:", y_train_categorical.dtype )
-    st.write("Tipo de y_train_categorical:", y_train_categorical.dtype )
-    
-    NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs)
-    #NN_model.fit(X_train, y_train_categorical, epochs=10)
-
+    nb_epochs = 100
+    NN_model.fit(X_train, y_train_categorical, epochs=nb_epochs, batch_size=50)
 
     #convertir tensor en numpy array
-    #X_test = np.array(X_test)
+    X_test = np.array(X_test)
 
-    #NNpredictions = NN_model.predict(X_test)
+    NNpredictions = NN_model.predict(X_test)
+    
 
-    #NN_prediction = list()
-    #for i in range(len(NNpredictions)):
-        #NN_prediction.append(np.argmax(NNpredictions[i]))
+    NN_prediction = list()
+    for i in range(len(NNpredictions)):
+        NN_prediction.append(np.argmax(NNpredictions[i]))
 
     # Validation of the results
     st.write("Accuracy:")
-    #st.write(accuracy_score(y_test, NN_prediction))
+    st.write(accuracy_score(y_test, NN_prediction))
     
     st.write("Confusion Matrix:")
-    #st.write(confusion_matrix(y_test, NN_prediction))
-    #cm = confusion_matrix(y_test, NN_prediction)
-    #heatmap = go.Heatmap(z=cm,
-    #                 x=['Good', 'Bad'],
-    #                 y=['Good', 'Bad'],
-    #                 colorscale='Viridis')
+    st.write(confusion_matrix(y_test, NN_prediction))
+    cm = confusion_matrix(y_test, NN_prediction)
+    heatmap = go.Heatmap(z=cm,
+                     x=['Good', 'Bad'],
+                     y=['Good', 'Bad'],
+                     colorscale='Viridis')
     # Crear un objeto figura
-    #fig = go.Figure(data=[heatmap])
+    fig = go.Figure(data=[heatmap])
     # Utilizar st.plotly_chart para mostrar la figura en Streamlit
-    #st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
     #st.write("fbeta score:")
     #st.write(fbeta_score(y_test, NN_prediction, beta=2))
@@ -366,24 +350,23 @@ def TrainningNN(X_train, X_test, y_train, y_test):
     #st.write(classification_report(y_test, NN_prediction))
     
     # Generate ROC curve values: fpr, tpr, thresholds
-    #fpr, tpr, thresholds = roc_curve(y_test, NNpredictions[:, 1])
-    #lr_auc = roc_auc_score(y_test, NNpredictions[:, 1])
+    fpr, tpr, thresholds = roc_curve(y_test, NNpredictions[:, 1])
+    lr_auc = roc_auc_score(y_test, NNpredictions[:, 1])
     # Plot ROC curve
-    #fig = go.Figure()
+    fig = go.Figure()
     # Curva de habilidad nula
-    #fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash'), name='No Skill: ROC AUC=%.3f' % (0.5)))
+    fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], mode='lines', line=dict(dash='dash'), name='No Skill: ROC AUC=%.3f' % (0.5)))
     # Curva ROC del modelo
-    #fig.add_trace(go.Scatter(x=fpr, y=tpr, mode='lines', name='Logistic: ROC AUC=%.3f' % (lr_auc)))
+    fig.add_trace(go.Scatter(x=fpr, y=tpr, mode='lines', name='Logistic: ROC AUC=%.3f' % (lr_auc)))
     # Configura el diseño del gráfico
-    # fig.update_layout(xaxis_title='False Positive Rate',
-    #             yaxis_title='True Positive Rate',
-    #              title='ROC Curve',
-    #              showlegend=True)
+    fig.update_layout(xaxis_title='False Positive Rate',
+                  yaxis_title='True Positive Rate',
+                  title='ROC Curve',
+                  showlegend=True)
     # Muestra la figura en Streamlit
-    #st.plotly_chart(fig)
+    st.plotly_chart(fig)
     
-    #return NN_model
-    return 1
+    return NN_model
 
 def predictionForm(modelNN):
     option_sex = ['male', 'female']
